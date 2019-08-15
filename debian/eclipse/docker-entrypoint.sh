@@ -3,7 +3,7 @@
 set -e
 
 function .create-template() {
-	local TEMPLATE_FILE_NAME="template.sh"
+	local TEMPLATE_FILE_NAME="template-eclipse.sh"
 	local ENVIRONMENT_FILE_DIR="${HOME}/.env"
 	local TEMPLATE_FILE_DIR="/opt/.run"
 	local TEMPLATE_FILE="${ENVIRONMENT_FILE_DIR}/${TEMPLATE_FILE_NAME}"
