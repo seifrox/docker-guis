@@ -12,10 +12,44 @@ These are the applications, I currently got working with alpine linux, for minim
 
 [freemind](http://freemind.sourceforge.net/wiki/index.php/Main_Page) is my favorite mind mapping tool, simply because of the great keyboard shortcuts.
 
+#### build
+
+```bash
+# build the image and tag it
+docker build ./alpine/freemind/ -t seifrox/freemind:1.0.1
+```
+
+#### run
+
+```bash
+# running the container from the image and naming it, so it can be reused
+docker run --name freemind-1.0.1 -e DISPLAY --net=host -v /home/$(whoami)/:/home/user seifrox/freemind:1.0.1
+
+# subsequent usage of the same container
+docker start freemind-1.0.1
+```
+
 ## debian linux based containers
 
 These are the applications, I currently was not able to get running with alpine without any issues.
 
 ### eclipse
 
-I use [eclipse](https://www.eclipse.org) for Java development, so this image contains the version I need plus my favourite plugins. For adapting to your own plugin needs, check out this [guide](https://stackoverflow.com/questions/47582157/eclipse-marketplace-plug-ins-silent-install)
+I use [eclipse](https://www.eclipse.org) for Java development, currently still with JDK 8, so this image contains the version I need plus my favourite plugins. For adapting to your own plugin needs, check out this [guide](https://stackoverflow.com/questions/47582157/eclipse-marketplace-plug-ins-silent-install)
+
+#### build
+
+```bash
+# build the image and tag it
+docker build ./debian/eclipse -t seifrox/eclipse-2019-06:openjdk-8
+```
+
+#### run
+
+```bash
+# running the container from the image and naming it, so it can be reused
+docker run --name eclipse-2019-06-openjdk-8 -e DISPLAY --net=host -v /home/$(whoami)/data/code/java/:/home/user/workspace -v /home/$(whoami)/.m2/:/home/user/.m2 -v /home/$(whoami)/.env:/home/user/.env seifrox/eclipse-2019-06:openjdk-8
+
+# subsequent usage of the same container
+docker start eclipse-2019-06-openjdk-8
+```

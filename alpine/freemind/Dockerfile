@@ -19,7 +19,7 @@ ARG GID=1000
 ARG USER_NAME=user
 
 ADD docker-entrypoint.sh /opt/.run/docker-entrypoint.sh
-ADD template.sh /opt/.run/template.sh
+ADD template-freemind.sh /opt/.run/template-freemind.sh
 ADD run.sh /opt/.run/run.sh
 COPY --from=downloader /tmp/freemind /opt/freemind
 

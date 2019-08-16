@@ -9,7 +9,7 @@ function .create-template() {
 	local TEMPLATE_FILE="${ENVIRONMENT_FILE_DIR}/${TEMPLATE_FILE_NAME}"
 	if [ ! -f "${TEMPLATE_FILE}" ]; then
 		printf "creating '${TEMPLATE_FILE}'...\n"
-		mkdir "${ENVIRONMENT_FILE_DIR}"
+		mkdir -p "${ENVIRONMENT_FILE_DIR}"
 		cp -v "${TEMPLATE_FILE_DIR}/${TEMPLATE_FILE_NAME}" "${TEMPLATE_FILE}"
 		printf "creating '${TEMPLATE_FILE}' done.\n"
 	fi
@@ -17,7 +17,7 @@ function .create-template() {
 
 function .run() {
 	local ENVIRONMENT_FILE="${HOME}/.env/environment.sh"
-	local TEMPLATE_FILE="${HOME}/.env/template.sh"
+	local TEMPLATE_FILE="${HOME}/.env/template-freemind.sh"
 	local RUN_SCRIPT="/opt/.run/run.sh"
 	local FILE
 
