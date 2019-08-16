@@ -33,6 +33,28 @@ docker start freemind-1.0.1
 
 These are the applications, I currently was not able to get running with alpine without any issues.
 
+### android studio
+
+I use [android studio](https://developer.android.com/studio) for Android development, currently still with JDK 8
+
+#### build
+
+```bash
+# build the image and tag it
+docker build ./debian/android-studio/ -t seifrox/android-studio-3.4.2.0:openjdk-8
+```
+
+#### run
+
+```bash
+# running the container from the image and naming it, so it can be reused
+docker run --name android-studio-3.4.2.0 -e DISPLAY --net=host -v /dev/bus/usb:/dev/bus/usb -v /home/$(whoami)/data/code/android:/home/user/android-studio-workspace -v /home/$(whoami)/.m2:/home/user/.m2 -v /home/$(whoami)/.gradle:/home/user/.gradle -v /home/$(whoami)/android-sdk:/home/user/Android/Sdk seifrox/android-studio-3.4.2.0:openjdk-8
+
+
+# subsequent usage of the same container
+docker start android-studio-3.4.2.0
+```
+
 ### eclipse
 
 I use [eclipse](https://www.eclipse.org) for Java development, currently still with JDK 8, so this image contains the version I need plus my favourite plugins. For adapting to your own plugin needs, check out this [guide](https://stackoverflow.com/questions/47582157/eclipse-marketplace-plug-ins-silent-install)
