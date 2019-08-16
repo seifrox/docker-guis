@@ -1,8 +1,8 @@
 # docker-guis
 
-Docker GUIs is my personal collection of docker containers I build for GUI applications I commonly use.
+Docker GUIs is my personal collection of docker containers I build for GUI applications I commonly use. Since the GUI images are based on linux you will need a **linux environment** in order to be able to use them, with the commands given (although there exists the possibility to run them on Windows with some X11 tooling, or via using VNC and a webserver within the docker image, I am not going into details here)
 
-In general all containers by default assume a user with `UID 1000` and `GID 1000`. In order to adapt to different displays being used, even when reusing a container, all containers support injecting environment variables. During startup if it does not exist, the follwoing file will be created `~/.env/template-<application>.sh` and `~/.env/environment.sh` will be loaded and executed before launching the actual application. So by mounting your actual home directory into the container you can control the environment variables without havin to recreate the container.
+In general all containers by default assume a user with `UID 1000` and `GID 1000`. In order to adapt to different displays being used, even when reusing a container, all containers support injecting environment variables. During startup if it does not exist, the following file will be created `~/.env/template-<application>.sh` and `~/.env/environment.sh` will be loaded and executed before launching the actual application. So by mounting your actual home directory into the container you can control the environment variables without havin to recreate the container.
 
 ## alpine linux based containers
 
