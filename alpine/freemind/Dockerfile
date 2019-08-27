@@ -31,6 +31,7 @@ RUN printf "installing packages...\n" && \
 	apk add --no-cache \
 	bash \
 	gtk+3.0 \
+	libcanberra-gtk3 \
 	ttf-dejavu && \
 	\
 	printf "user setup...\n" && \

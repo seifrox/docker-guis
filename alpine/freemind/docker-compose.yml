@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  freemind:
+    build: .
+    image: seifrox/freemind:1.0.1
+    container_name: freemind-1.0.1
+    network_mode: host
+    environment:
+      DISPLAY: ${DISPLAY}
+      NO_AT_BRIDGE: 1
+    volumes:
+      - ~/:/home/user
