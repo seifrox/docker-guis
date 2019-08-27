@@ -23,10 +23,17 @@ docker build ./alpine/freemind/ -t seifrox/freemind:1.0.1
 
 ```bash
 # running the container from the image and naming it, so it can be reused
-docker run --name freemind-1.0.1 -e DISPLAY --net=host -v /home/$(whoami)/:/home/user seifrox/freemind:1.0.1
+docker run --name freemind-1.0.1 -e DISPLAY --net=host -v ~/:/home/user seifrox/freemind:1.0.1
 
 # subsequent usage of the same container
 docker start freemind-1.0.1
+```
+
+#### docker-compose
+
+```bash
+# running it (it will build it if necessary)
+cd ./alpine/freemind/ && docker-compose up
 ```
 
 ## debian linux based containers
@@ -48,11 +55,18 @@ docker build ./debian/android-studio/ -t seifrox/android-studio-3.4.2.0:openjdk-
 
 ```bash
 # running the container from the image and naming it, so it can be reused
-docker run --name android-studio-3.4.2.0 -e DISPLAY --net=host -v /dev/bus/usb:/dev/bus/usb -v /home/$(whoami)/data/code/android:/home/user/android-studio-workspace -v /home/$(whoami)/.m2:/home/user/.m2 -v /home/$(whoami)/.gradle:/home/user/.gradle -v /home/$(whoami)/android-sdk:/home/user/Android/Sdk seifrox/android-studio-3.4.2.0:openjdk-8
+docker run --name android-studio-3.4.2.0 -e DISPLAY --net=host -v /dev/bus/usb:/dev/bus/usb -v ~/data/code/android:/home/user/android-studio-workspace -v ~/.m2:/home/user/.m2 -v ~/.gradle:/home/user/.gradle -v ~/android-sdk:/home/user/Android/Sdk seifrox/android-studio-3.4.2.0:openjdk-8
 
 
 # subsequent usage of the same container
 docker start android-studio-3.4.2.0
+```
+
+#### docker-compose
+
+```bash
+# running it (it will build it if necessary)
+cd ./debian/android-studio/ && docker-compose up
 ```
 
 ### eclipse
@@ -70,8 +84,15 @@ docker build ./debian/eclipse -t seifrox/eclipse-2019-06:openjdk-8
 
 ```bash
 # running the container from the image and naming it, so it can be reused
-docker run --name eclipse-2019-06-openjdk-8 -e DISPLAY --net=host -v /home/$(whoami)/data/code/java/:/home/user/workspace -v /home/$(whoami)/.m2/:/home/user/.m2 -v /home/$(whoami)/.env:/home/user/.env seifrox/eclipse-2019-06:openjdk-8
+docker run --name eclipse-2019-06-openjdk-8 --env DISPLAY --env NO_AT_BRIDGE=1 --add-host=$HOSTNAME:127.0.0.1 --net=host -v ~/data/code/java/:/home/user/workspace -v ~/.m2/:/home/user/.m2 -v ~/.env:/home/user/.env seifrox/eclipse-2019-06:openjdk-8
 
 # subsequent usage of the same container
 docker start eclipse-2019-06-openjdk-8
+```
+
+#### docker-compose
+
+```bash
+# running it (it will build it if necessary)
+cd ./debian/eclipse/ && docker-compose up
 ```
