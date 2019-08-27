@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  eclipse:
+    build: .
+    image: seifrox/android-studio-3.4.2.0:openjdk-8
+    container_name: android-studio-3.4.2.0
+    network_mode: host
+    extra_hosts:
+      alpha: 127.0.0.1
+    environment:
+      DISPLAY: ${DISPLAY}
+      NO_AT_BRIDGE: 1
+    volumes:
+      - ~/.env:/home/user/.env
+      - /dev/bus/usb:/dev/bus/usb
+      - ~/data/code/android:/home/user/android-studio-workspace
+      - ~/.m2:/home/user/.m2
+      - ~/.gradle:/home/user/.gradle
+      - ~/.android/sdk:/home/user/Android/Sdk
