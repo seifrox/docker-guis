@@ -25,17 +25,14 @@ ENV HOME /home/${USER_NAME}
 WORKDIR ${HOME}
 ENTRYPOINT [ "/opt/.run/docker-entrypoint.sh" ]
 
-RUN printf "disabling openjdk assistive technologies...\n" && \
-	sed -i -e '/^assistive_technologies=/s/^/#/' /etc/java-*-openjdk/accessibility.properties && \
-	\
-	printf "installing packages...\n" && \
+RUN printf "installing packages...\n" && \
 	apt-get update && \
 	\
 	apt-get install -y \
 	bash \
 	libgtk-3-0 \
-	libswt-gtk-3-java \
-	libwebkitgtk-3.0-0 \
+	libswt-gtk-4-java \
+	libwebkit2gtk-4.0-37 \
 	ttf-dejavu && \
 	\
 	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
