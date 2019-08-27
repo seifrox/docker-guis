@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  eclipse:
+    build: .
+    image: seifrox/eclipse-2019-06:openjdk-8
+    container_name: eclipse-2019-06-openjdk-8
+    network_mode: host
+    environment:
+      DISPLAY: ${DISPLAY}
+      NO_AT_BRIDGE: 1
+    volumes:
+      - ~/data/code/java/:/home/user/workspace
+      - ~/.m2/:/home/user/.m2
+      - ~/.env:/home/user/.env
